@@ -10,7 +10,7 @@
   * inserted by the user or by software development tools
   * are owned by their respective copyright owners.
   *
-  * COPYRIGHT(c) 2018 STMicroelectronics
+  * COPYRIGHT(c) 2019 STMicroelectronics
   *
   * Redistribution and use in source and binary forms, with or without modification,
   * are permitted provided that the following conditions are met:
@@ -98,8 +98,10 @@ int main(void)
   MX_GPIO_Init();
   MX_DMA_Init();
   MX_USART2_UART_Init();
+  MX_USART1_UART_Init();
   /* USER CODE BEGIN 2 */
   HAL_UART_Receive_DMA(&huart2, data, 3);
+  HAL_UART_Receive_DMA(&huart1, data, 3);
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -117,6 +119,14 @@ int main(void)
     HAL_Delay(100);
     HAL_UART_Transmit_DMA(&huart2, led_off_text, 5);
     HAL_Delay(100);
+
+
+    HAL_UART_Transmit_DMA(&huart1, led_off_text, 5);
+    HAL_Delay(100);
+    HAL_UART_Transmit_DMA(&huart1, led_on_text, 5);
+    HAL_Delay(100);
+
+
   }
   /* USER CODE END 3 */
 
